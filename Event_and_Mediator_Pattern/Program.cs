@@ -11,11 +11,17 @@ namespace Event_and_Mediator_Pattern
 		static void Main(string[] args)
 		{
 			Member member = new Member();
-			member.Name = "Allen";
+
+			member.DataChange += Member_DataChange; //設定要先講
+			member.Name = "Allen"; // 這裡要觸發
 
 			string name = member.Name;
 
+		}
 
+		private static void Member_DataChange()
+		{
+			Console.WriteLine("有事件被觸發了");
 		}
 	}
 
@@ -31,7 +37,7 @@ namespace Event_and_Mediator_Pattern
 		{
 			get { return _Name; }
 			set 
-			{
+			{ 
 				DataChange();
 				_Name = value; 
 			}
