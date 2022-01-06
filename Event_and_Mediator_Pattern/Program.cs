@@ -37,9 +37,13 @@ namespace Event_and_Mediator_Pattern
 		{
 			get { return _Name; }
 			set 
-			{ 
-				DataChange();
-				_Name = value; 
+			{
+				_Name = value;
+				if (DataChange != null)
+				{
+					DataChange();
+				}
+				 
 			}
 		}
 	}
