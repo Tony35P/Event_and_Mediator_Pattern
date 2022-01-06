@@ -48,17 +48,39 @@ namespace Event_and_Mediator_Pattern
 			set 
 			{
 				_Name = value;
-				if (DataChange != null)
-				{
-					DataChange(this, EventArgs.Empty);
-				}
-				 
+				
+				 OnDataChange(EventArgs.Empty);
+			}
+		}
+
+		protected virtual void OnDataChange(EventArgs args)
+		{
+			if (DataChange != null)
+			{
+				DataChange(this, args);
 			}
 		}
 	}
 
 	class VIP:Member
 	{
+		private string _Email;
+		public string Email
+		{
+			get { return _Email; }
+			set
+			{
+				_Email = value;
+				
+				OnDataChange(EventArgs.Empty);
+			}
+		}
 
+		protected override void OnDataChange(EventArgs args)
+		{
+			//... 事件觸發前
+			base.OnDataChange(args); //不想觸發事件就刪掉
+			//... 事件觸發後
+		}
 	}
 }
