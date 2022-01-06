@@ -24,13 +24,13 @@ namespace Event_and_Mediator_Pattern
 
 		
 
-		private static void Member_DataChange(Member sender)
+		private static void Member_DataChange(Member sender, EventArgs arg)
 		{
 			Console.WriteLine(sender.Name);
 		}
 	}
 
-	delegate void DataChangeHandler(Member sender);
+	delegate void DataChangeHandler(Member sender,EventArgs args);
 
 	class Member
 	{
@@ -46,7 +46,7 @@ namespace Event_and_Mediator_Pattern
 				_Name = value;
 				if (DataChange != null)
 				{
-					DataChange(this);
+					DataChange(this, EventArgs.Empty);
 				}
 				 
 			}
