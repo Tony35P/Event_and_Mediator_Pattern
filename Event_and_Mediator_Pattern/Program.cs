@@ -14,10 +14,15 @@ namespace Event_and_Mediator_Pattern
 
 			member.DataChange += Member_DataChange; //設定要先講
 			member.Name = "Allen"; // 這裡要觸發
-
 			string name = member.Name;
 
+			Member member2 = new Member();
+			member2.DataChange += Member_DataChange;
+			member2.Name = "Tony";
+
 		}
+
+		
 
 		private static void Member_DataChange()
 		{
