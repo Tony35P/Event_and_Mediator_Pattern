@@ -13,6 +13,20 @@ namespace MediatorPatrern
 		}
 	}
 
+	public class CartMediator
+	{
+		private readonly ICartService _cart;
+		private readonly IOrderService _order;
+		private readonly IStockService _stock;
+
+		public CartMediator(ICartService cart, IOrderService order, IStockService stock )
+		{
+			_cart = cart;
+			_order = order;
+			_stock = stock;
+		}
+	}
+
 	public interface ICartService
 	{
 
